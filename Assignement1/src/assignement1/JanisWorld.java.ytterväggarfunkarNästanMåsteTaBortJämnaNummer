@@ -1,0 +1,85 @@
+package assignement1;
+
+import becker.robots.*;
+
+import java.util.Random;
+
+public class JanisWorld {
+
+	public static void main(String[] args) {
+		City JanisTown = new City(15, 15);
+		JanisRobot jp = new JanisRobot(JanisTown, 7, 7, Direction.NORTH);
+
+		Random rand = new Random();
+		int size = rand.nextInt(9) + 5;
+		int sizehalvNW = 7 - (size / 2);
+		int sizehalvSE = 7 + (size / 2);
+
+
+		// North and west wall
+
+
+		if (sizehalvNW < 0) {
+			int NW = 0;
+
+			new Wall(JanisTown, NW, NW, Direction.NORTH);
+			new Wall(JanisTown, NW, NW, Direction.WEST);
+		}  else {
+			
+			int Nx = sizehalvNW;
+			int Ny = sizehalvNW;
+			int Wx = sizehalvNW;
+			int Wy = sizehalvNW;
+
+			for (int i = 0; i < size + 1; i++) {
+
+				new Wall(JanisTown, Nx, Ny, Direction.NORTH);
+				new Wall(JanisTown, Wx, Wy, Direction.WEST);
+				Ny++;
+				Wx++;
+
+			}
+
+		}
+		
+		// East and south wall
+
+		int Ey = sizehalvSE;
+		int Ex = sizehalvSE;
+		int Sy = sizehalvSE;
+		int Sx = sizehalvSE;
+
+		for (int i = 0; i < size + 1; i++) {
+
+			new Wall(JanisTown, Sx, Sy, Direction.SOUTH);
+			new Wall(JanisTown, Ex, Ey, Direction.EAST);
+			Sy--;
+			Ex--;
+
+		}
+		// y,x
+
+			
+//	z = 7
+//			
+//			x+i
+//			y+1
+//			size/2
+//			7+size/2+i
+//			7-size/2-i
+	
+	// starting point 7,7 - sizeofwall/2
+		// new Wall(JanisTown, avlstr, avlstr, Direction.WEST);
+
+
+		// Random rand = new Random();
+		// int st = rand.nextInt(9) + 1;
+		// int av = rand.nextInt(9) + 1;
+		// int dir = rand.nextInt(4);
+		// Direction d = Direction.NORTH;
+
+	}
+}
+
+
+
